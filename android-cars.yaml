@@ -1,0 +1,1556 @@
+swagger: '2.0'
+info:
+  description: >-
+    Back-end developers were <b>crying</b> because they wanted to know the
+    endpoints used by mobile apps. This swagger shows all endpoints currenlty
+    being used by Android cars application.<br><b>There's no need to cry
+    anymore.</b>
+  version: 1.0.0
+  title: Android cars endpoints
+  contact:
+    email: sergio.serra@olx.com
+basePath: /i2
+schemes:
+  - https
+paths:
+  /definitions/categories:
+    get:
+      tags:
+        - Definitions
+      summary: Get categories
+      description: ''
+      operationId: getCategories
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+  /definitions/startup:
+    get:
+      tags:
+        - Definitions
+      summary: Called every time the app opens
+      description: ''
+      operationId: startup
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+  /definitions/promoteads:
+    get:
+      tags:
+        - Definitions
+      summary: '??'
+      description: ''
+      operationId: promoteads
+      parameters:
+        - name: promotion
+          in: query
+          description: 'Indicates where the promoted ads will appear ex: ''ad_homepage'''
+          required: true
+          type: string
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+  /definitions/reasonsforterminationad:
+    get:
+      tags:
+        - Definitions
+      summary: Get reasons for termination ??
+      description: ''
+      operationId: getDeactivateMyAdDefinitions
+      parameters:
+        - name: alog
+          in: query
+          description: 'Alog WTF is this '
+          required: true
+          type: string
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+  /ads:
+    get:
+      tags:
+        - Ads Listing
+      summary: Gets a list of ads
+      description: ''
+      operationId: ads
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+  /ad/similar:
+    get:
+      tags:
+        - Ads Listing
+      summary: Gets similar ads
+      description: ''
+      operationId: similarAds
+      parameters:
+        - name: id
+          in: query
+          description: Indicates the ad id
+          required: true
+          type: string
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+  /ajax/ads/total:
+    get:
+      tags:
+        - Ads Listing
+      summary: Gets ads count
+      description: ''
+      operationId: adsTotal
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+  /ajax/observed/isadobservedsearch:
+    get:
+      tags:
+        - Ads Listing
+      summary: Checks if the search is observed
+      description: ''
+      operationId: isadobservedsearch
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          
+  /ajax/ad/getContact:
+    get:
+      tags:
+        - Ad
+      summary: Gets phone number for the ad
+      description: ''
+      operationId: getContact
+      parameters:
+        - name: type
+          in: query
+          description: 'Ex:phone'
+          required: true
+          type: string
+        - name: id
+          in: query
+          description: The ad id
+          required: true
+          type: string
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+ 
+  /oferta:
+    get:
+      tags:
+        - Ad
+      summary: Get ad details
+      description: ''
+      operationId: getAdDetauks
+      parameters:
+        - name: id
+          in: query
+          description: The ad id
+          required: true
+          type: string
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+  
+  /ajax/dealerinfo/{userId}:
+    get:
+      tags:
+        - Ad
+      summary: Get dealer info
+      description: ''
+      operationId: getAdDetails
+      parameters:
+        - name: userId
+          in: path
+          description: The user id
+          required: true
+          type: string
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK       
+          
+  /ajax/suggest/city:
+    get:
+      tags:
+        - Cities & Location
+      summary: Gets city suggestions
+      description: ''
+      operationId: getCitySuggestion
+      parameters:
+        - name: q
+          in: query
+          description: The query string to search
+          required: false
+          type: string
+        - name: adding
+          in: query
+          description: '??'
+          required: false
+          type: integer
+        - name: lon
+          in: query
+          description: longitude
+          required: false
+          type: string
+        - name: lat
+          in: query
+          description: latitude
+          required: false
+          type: string
+        - name: suggest
+          in: query
+          description: '?? Always set to 1'
+          required: false
+          type: integer
+        - name: preserve_lat_lon
+          in: query
+          description: '??'
+          required: false
+          type: integer
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+  /ajax/selector/location:
+    get:
+      tags:
+        - Cities & Location
+      summary: Get the list of regions
+      description: ''
+      operationId: listRegions
+      parameters:
+        - name: adding
+          in: query
+          description: '??'
+          required: true
+          type: string
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+  /ajax/selector/locationregion:
+    get:
+      tags:
+        - Cities & Location
+      summary: Get the list of cities
+      description: ''
+      operationId: listCities
+      parameters:
+        - name: region_id
+          in: query
+          description: The region id
+          required: true
+          type: string
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+  /ajax/selector/locationcity:
+    get:
+      tags:
+        - Cities & Location
+      summary: Get the list of districts
+      description: ''
+      operationId: listDistrict
+      parameters:
+        - name: city_id
+          in: query
+          description: The city id
+          required: true
+          type: string
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+  /token/bindandroid/:
+    get:
+      tags:
+        - GCM
+      summary: Sends the GCM token
+      description: ''
+      operationId: bindGCMToken
+      parameters:
+        - name: device
+          in: query
+          description: The GCM token
+          required: true
+          type: string
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+  /ajax/observed/getobservedadslist:
+    get:
+      tags:
+        - Observed Counters
+      summary: 'Gets the observed counters, wtf is this ???'
+      description: ''
+      operationId: ovbservedAdCounters
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+  /observed/addad:
+    get:
+      tags:
+        - Observed Ads
+      summary: Observes an add
+      description: ''
+      operationId: addObservedAd
+      parameters:
+        - name: id
+          in: query
+          description: The ad id to observe
+          required: true
+          type: string
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+  /observed/removead:
+    get:
+      tags:
+        - Observed Ads
+      summary: Remove an add from observed state
+      description: ''
+      operationId: removeObservedAd
+      parameters:
+        - name: id
+          in: query
+          description: The ad id to remove
+          required: true
+          type: string
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+  /observed/removeallads:
+    get:
+      tags:
+        - Observed Ads
+      summary: Remove all observed ads
+      description: ''
+      operationId: removeAllAdsFromObserved
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+  /observed/getAds:
+    get:
+      tags:
+        - Observed Ads
+      summary: Get observed ads
+      description: ''
+      operationId: getObservedAdList
+      parameters:
+        - name: alog
+          in: query
+          description: WTF is this ???
+          required: false
+          type: string
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+  /observed/getsearches:
+    get:
+      tags:
+        - Observed searches
+      summary: Get observed searches
+      description: ''
+      operationId: getObservedSearchList
+      parameters:
+        - name: alog
+          in: query
+          description: WTF is this ???
+          required: false
+          type: string
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+  /observed/removeallsearches:
+    get:
+      tags:
+        - Observed searches
+      summary: Remove observed searches
+      description: ''
+      operationId: removeAllObservedSearches
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+  /observed/removesearch:
+    get:
+      tags:
+        - Observed searches
+      summary: Remove observed search
+      description: ''
+      operationId: removeObservedSearches
+      parameters:
+        - name: id
+          in: query
+          description: The id of search to remove
+          required: false
+          type: string
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+  /observed/addsearch:
+    get:
+      tags:
+        - Observed searches
+      summary: Add search to observed state
+      description: ''
+      operationId: addObservedSearch
+      parameters:
+        - name: id
+          in: query
+          description: The id of search to remove
+          required: false
+          type: string
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+  /ajax/observed/changealarm:
+    post:
+      tags:
+        - Observed searches
+      summary: Change the search alarm
+      description: ''
+      operationId: changeSearchAlarm
+      consumes:
+        - application/x-www-form-urlencoded
+      parameters:
+        - in: formData
+          name: id
+          type: string
+          description: The id of the search
+          required: true
+        - in: formData
+          name: action
+          type: string
+          description: The action to make
+          required: true
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+  /ajax/account/:
+    post:
+      tags:
+        - Login
+      summary: Login the user
+      description: ''
+      operationId: login
+      consumes:
+        - application/x-www-form-urlencoded
+      parameters:
+        - in: formData
+          name: 'login[email]'
+          type: string
+          description: The user email
+          required: true
+        - in: formData
+          name: 'login[password]'
+          type: string
+          description: The user password
+          required: true
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+  /ajax/account/allegro:
+    post:
+      tags:
+        - Login
+      summary: Login the user with allegro
+      description: ''
+      operationId: loginAllegro
+      consumes:
+        - application/x-www-form-urlencoded
+      parameters:
+        - in: formData
+          name: 'login[allegro_login]'
+          type: string
+          description: The user email
+          required: true
+        - in: formData
+          name: 'login[allegro_password]'
+          type: string
+          description: The user password
+          required: true
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+  /ajax/account/facebooklogin:
+    post:
+      tags:
+        - Login
+      summary: Login the user with facebook
+      description: ''
+      operationId: loginFacebook
+      consumes:
+        - application/x-www-form-urlencoded
+      parameters:
+        - in: formData
+          name: token
+          type: string
+          description: The facebook token
+          required: true
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+  /ajax/account/googlelogin:
+    post:
+      tags:
+        - Login
+      summary: Login the user with google
+      description: ''
+      operationId: loginGoogle
+      consumes:
+        - application/x-www-form-urlencoded
+      parameters:
+        - in: formData
+          name: token
+          type: string
+          description: The google token
+          required: true
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+  /ajax/account/logout:
+    get:
+      tags:
+        - Login
+      summary: Logout the user
+      description: ''
+      operationId: logout
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+  /ajax/account/sendmail:
+    post:
+      tags:
+        - Login
+      summary: 'Manage via email, WTF is this ???'
+      description: ''
+      operationId: manageViaEmail
+      consumes:
+        - application/x-www-form-urlencoded
+      parameters:
+        - in: formData
+          name: 'login[email]'
+          type: string
+          description: The user email
+          required: true
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+  /ajax/account/password:
+    post:
+      tags:
+        - Login
+      summary: Changes the user password
+      description: ''
+      operationId: remindPassword
+      consumes:
+        - application/x-www-form-urlencoded
+      parameters:
+        - in: formData
+          name: 'register[email]'
+          type: string
+          description: The user email
+          required: true
+        - in: formData
+          name: 'register[password]'
+          type: string
+          description: Password 1
+          required: true
+        - in: formData
+          name: 'register[password2]'
+          type: string
+          description: Password 2
+          required: true
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+  /ajax/account/register:
+    post:
+      tags:
+        - Login
+      summary: Register user
+      description: ''
+      operationId: registerUser
+      consumes:
+        - application/x-www-form-urlencoded
+      parameters:
+        - in: formData
+          name: 'register[email]'
+          type: string
+          description: The user email
+          required: true
+        - in: formData
+          name: 'register[password]'
+          type: string
+          description: Password 1
+          required: true
+        - in: formData
+          name: 'register[password2]'
+          type: string
+          description: Password 2
+          required: true
+        - in: formData
+          name: 'register[rules]'
+          type: string
+          description: Rules
+          required: true
+        - in: formData
+          name: 'register[newsletter]'
+          type: string
+          description: Newsletter
+          required: true
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+  '/adding/{adurl}':
+    get:
+      tags:
+        - Post Ad & Preview ad
+      summary: 'Get adding, WTF is this ??'
+      description: ''
+      operationId: Adds an ad
+      parameters:
+        - in: path
+          name: adurl
+          required: true
+          type: string
+          description: The url of the ad
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+  /adding/:
+    post:
+      tags:
+        - Post Ad & Preview ad
+      summary: Posts an add
+      description: ''
+      operationId: postAd
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+  /adding/preview:
+    post:
+      tags:
+        - Post Ad & Preview ad
+      summary: Preview an add
+      description: ''
+      operationId: previewAd
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+  /account/menu:
+    get:
+      tags:
+        - Account
+      summary: 'Get counters, WTF is this ??'
+      description: ''
+      operationId: getCounters
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+  '/ajax/ad/contact/{id}':
+    post:
+      tags:
+        - Account
+      summary: Offer contact ??
+      description: ''
+      operationId: offerContact
+      parameters:
+        - in: path
+          name: id
+          required: true
+          type: string
+          description: The id of the ad
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+    get:
+      tags:
+        - Account
+      summary: WTF is this ??
+      description: ''
+      operationId: getOfferContactDefinition
+      parameters:
+        - in: path
+          name: id
+          required: true
+          type: string
+          description: The id of the ad
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+  '/ajax/ad/abuse/{id}':
+    post:
+      tags:
+        - Account
+      summary: Reports an ad
+      description: ''
+      operationId: reportAd
+      parameters:
+        - in: path
+          name: id
+          required: true
+          type: string
+          description: The id of the ad to report
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+    get:
+      tags:
+        - Account
+      summary: Get abuse reasons list
+      description: ''
+      operationId: adAbuse
+      parameters:
+        - in: path
+          name: id
+          required: true
+          type: string
+          description: The id of the ad
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+  /ajax/upload/removeattachment:
+    post:
+      tags:
+        - Upload
+      summary: Removes an attachment
+      description: ''
+      operationId: removeAttachment
+      parameters:
+        - in: formData
+          name: id
+          required: true
+          type: string
+          description: The id of the ad to report
+        - in: formData
+          name: slot
+          required: true
+          type: integer
+          description: Riak slot
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+  /ajax/upload/upload:
+    post:
+      tags:
+        - Upload
+      summary: Upload photo to ad
+      description: ''
+      operationId: uploadPhotoToNewAd
+      parameters:
+        - in: formData
+          name: file";filename="1"
+          required: true
+          type: string
+          description: The id of the ad to report
+        - in: query
+          name: slot
+          required: true
+          type: string
+          description: Riak slot
+        - in: query
+          name: ad_id
+          required: true
+          type: string
+          description: The ad id
+        - in: query
+          name: riak_key
+          required: true
+          type: string
+          description: Riak key
+        - in: query
+          name: category
+          required: true
+          type: string
+          description: Category
+        - in: query
+          name: rotation
+          required: false
+          type: integer
+          description: Rotation
+      consumes:
+        - multipart/form-data
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+  /ajax/upload/remove:
+    post:
+      tags:
+        - Upload
+      summary: remove uploaded photo
+      description: ''
+      operationId: removeUploadPhoto
+      parameters:
+        - in: formData
+          name: slot
+          required: true
+          type: integer
+          description: Riak slot
+        - in: formData
+          name: ad_id
+          required: true
+          type: string
+          description: The ad id
+        - in: formData
+          name: riak_key
+          required: true
+          type: string
+          description: Riak key
+      consumes:
+        - multipart/form-data
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+  /ajax/upload/rotate:
+    post:
+      tags:
+        - Upload
+      summary: Rotate uploaded photo
+      description: ''
+      operationId: rotateUploadPhoto
+      parameters:
+        - in: formData
+          name: slot
+          required: true
+          type: integer
+          description: Riak slot
+        - in: formData
+          name: ad_id
+          required: true
+          type: string
+          description: The ad id
+        - in: formData
+          name: riak_key
+          required: true
+          type: string
+          description: Riak key
+        - in: formData
+          name: rotation
+          required: false
+          type: integer
+          description: Rotation
+      consumes:
+        - multipart/form-data
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+  /ajax/upload/order:
+    post:
+      tags:
+        - Upload
+      summary: Send uploaded photo order
+      description: ''
+      operationId: sendUploadedPhotoOrder
+      parameters:
+        - in: formData
+          name: 'slot[]'
+          required: true
+          type: string
+          description: Riak slot
+        - in: formData
+          name: ad_id
+          required: true
+          type: string
+          description: The ad id
+        - in: formData
+          name: riak_key
+          required: true
+          type: string
+          description: Riak key
+      consumes:
+        - multipart/form-data
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+  /ajax/upload/attachment:
+    post:
+      tags:
+        - Upload
+      summary: Upload attachment
+      description: ''
+      operationId: uploadAttac
+      parameters:
+        - in: formData
+          name: file
+          required: true
+          type: string
+          description: Riak slot
+        - in: formData
+          name: name
+          required: true
+          type: string
+          description: '??'
+        - in: query
+          name: riak_key
+          required: true
+          type: string
+          description: Riak key
+        - in: query
+          name: name
+          required: true
+          type: string
+          description: Filename
+      consumes:
+        - multipart/form-data
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+  '/myaccount/{adurl}':
+    get:
+      tags:
+        - Account ads
+      summary: Get user ads list
+      description: ''
+      operationId: getMyAdsList
+      parameters:
+        - in: path
+          name: adurl
+          description: The id of search to remove
+          required: true
+          type: string
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+  '/myaccount/details/{id}':
+    get:
+      tags:
+        - Account ads
+      summary: Get user ad details
+      description: ''
+      operationId: getMyAdDetails
+      parameters:
+        - in: path
+          name: id
+          description: The id of the ad
+          required: true
+          type: string
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+  /ajax/myaccount/remove:
+    get:
+      tags:
+        - Account ads
+      summary: Removes an ad
+      description: ''
+      operationId: removeMyAd
+      parameters:
+        - in: query
+          name: id
+          description: The id of the ad to remove
+          required: true
+          type: string
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+  /ajax/myaccount/activate:
+    get:
+      tags:
+        - Account ads
+      summary: Activates an ad
+      description: ''
+      operationId: activateMyAd
+      parameters:
+        - in: query
+          name: id
+          description: The id of the ad to activate
+          required: true
+          type: string
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+  /ajax/myaccount/confirm:
+    get:
+      tags:
+        - Account ads
+      summary: Confirms an ad
+      description: ''
+      operationId: confirmMyAd
+      parameters:
+        - in: query
+          name: id
+          description: The id of the ad to confirm
+          required: true
+          type: string
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+  /adding/confirm:
+    get:
+      tags:
+        - Account ads
+      summary: Confirms an ad with alog
+      description: ''
+      operationId: confirmMyAdWithAlog
+      parameters:
+        - in: query
+          name: id
+          description: The id of the ad to confirm
+          required: true
+          type: string
+        - in: query
+          name: alog
+          description: 'Alog ?? '
+          required: true
+          type: string
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+  /ajax/myaccount/refresh:
+    get:
+      tags:
+        - Account ads
+      summary: Refresh an ad
+      description: ''
+      operationId: refreshMyAd
+      parameters:
+        - in: query
+          name: id
+          description: The id of the ad to refresh
+          required: true
+          type: string
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+  '/ajax/myaccount/deactivate/{id}':
+    post:
+      tags:
+        - Account ads
+      summary: Deactivate ad
+      description: ''
+      operationId: deactivateAd
+      parameters:
+        - in: path
+          name: id
+          required: true
+          type: string
+          description: Riak slot
+        - in: formData
+          name: 'reason[id]'
+          required: true
+          type: string
+          description: Reason id
+        - in: formData
+          name: 'reason[text]'
+          required: true
+          type: string
+          description: Reason text
+      consumes:
+        - multipart/form-data
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+  /ad/owneractions:
+    get:
+      tags:
+        - Account ads
+      summary: Get the owner actions for Ad
+      description: ''
+      operationId: getOwnerActionsForAd
+      parameters:
+        - in: query
+          name: adId
+          description: The id of the ad to refresh
+          required: true
+          type: string
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+  '/ajax/myaccount/getmessageid/{id}':
+    get:
+      tags:
+        - Chat
+      summary: Get conversations for an Ad
+      description: ''
+      operationId: getConversationForAd
+      parameters:
+        - in: path
+          name: id
+          description: The id of the ad
+          required: true
+          type: string
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          
+  '/myaccount/answer/{id}':
+    get:
+      tags:
+        - Chat
+      summary: Gets user conversation
+      description: ''
+      operationId: getMyConversation
+      parameters:
+        - in: path
+          name: id
+          description: The id of the user
+          required: true
+          type: string
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          
+  '/ajax/myaccount/answer':
+    post:
+      tags:
+        - Chat
+      summary: Sends a message
+      description: ''
+      operationId: sendMessage
+      parameters:
+        - in: formData
+          name: answer[message]
+          required: true
+          type: string
+          description: Riak slot
+        - in: formData
+          name: 'riak_key'
+          required: true
+          type: string
+          description: Reason id
+        - in: formData
+          name: 'answer[id]'
+          required: true
+          type: string
+          description: Reason text
+      consumes:
+        - multipart/form-data
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+
+  '/ajax/myaccount/star':
+    post:
+      tags:
+        - Chat
+      summary: Favorites a conversation
+      description: ''
+      operationId: setConversationFavorite
+      parameters:
+        - in: formData
+          name: id
+          required: false
+          type: string
+          description: The id of the ad
+        - in: formData
+          name: selected
+          required: true
+          type: string
+          description: WTF is this ??
+        - in: formData
+          name: id[]
+          required: false
+          type: string
+          description: Array with conversations ids
+      consumes:
+        - multipart/form-data
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          
+  '/ajax/myaccount/removemessage':
+    post:
+      tags:
+        - Chat
+      summary: Removes a message from conversation
+      description: ''
+      operationId: removeConversationToArchived
+      parameters:
+        - in: formData
+          name: messageId
+          required: false
+          type: string
+          description: The id of the message
+        - in: formData
+          name: messageId[]
+          required: false
+          type: string
+          description: The array of message ids
+      consumes:
+        - multipart/form-data
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          
+  '/ajax/myaccount/activatemessage':
+    post:
+      tags:
+        - Chat
+      summary: Activates a message from conversation
+      description: ''
+      operationId: activateConversationFromArchived
+      parameters:
+        - in: formData
+          name: messageId
+          required: false
+          type: string
+          description: The id of the message
+        - in: formData
+          name: messageId[]
+          required: false
+          type: string
+          description: The array of message ids
+      consumes:
+        - multipart/form-data
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+        
+  '/ajax/myaccount/blockuser':
+    post:
+      tags:
+        - Chat
+      summary: Block a user
+      description: ''
+      operationId: blockUser
+      parameters:
+        - in: formData
+          name: blocked
+          required: true
+          type: string
+          description: The user id
+        - in: formData
+          name: value
+          required: true
+          type: string
+          description: Value ??
+      consumes:
+        - multipart/form-data
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          
+  '/ajax/logevent':
+    post:
+      tags:
+        - Statistics
+      summary: Send trackers to backend
+      description: ''
+      operationId: sendStats
+      parameters:
+        - in: formData
+          name: stats
+          required: true
+          type: string
+          description: Map with stats
+      consumes:
+        - multipart/form-data
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          
+  '/myaccount/activateremovedad':
+    post:
+      tags:
+        - Ad operations
+      summary: Activate remove ad ?? What is this ??
+      description: ''
+      operationId: activateremovedad
+      parameters:
+        - in: query
+          name: adId
+          required: true
+          type: string
+          description: The ad id
+        - in: query
+          name: alog
+          required: true
+          type: string
+          description: Alog WTF is this ??
+      consumes:
+        - multipart/form-data
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          
+  '/ajax/logrealtime/index':
+    get:
+      tags:
+        - Live Users Count
+      summary: Get live users count watching the Ad
+      description: ''
+      operationId: postViewingAdEvent
+      parameters:
+        - in: query
+          name: eventType
+          description: The event type
+          required: true
+          type: string
+        - in: query
+          name: itemIds
+          description: Items ids separated by comma
+          required: true
+          type: string
+        - in: query
+          name: eventGroup
+          description: Always ads
+          required: true
+          type: string
+        - in: query
+          name: protectionTokenNumber
+          description: Always 4
+          required: true
+          type: string
+        - in: query
+          name: source
+          description: Always mobile
+          required: true
+          type: string
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+
+  '/ajax/realtimestats':
+    get:
+      tags:
+        - Live Users Count
+      summary: Get live users count watching the Ad
+      description: ''
+      operationId: getRealtimeStats
+      parameters:
+        - in: query
+          name: eventType
+          description: Always "getrealtimevisitors"
+          required: true
+          type: string
+        - in: query
+          name: adId
+          description: The ad id
+          required: true
+          type: string
+        - in: query
+          name: protectionTokenNumber
+          description: Always 4
+          required: true
+          type: string
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          
