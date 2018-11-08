@@ -1,0 +1,229 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0",
+    "title": "Admin",
+    "description": "TODO: Add Description",
+    "contact": {}
+  },
+  "host": "localhost:8000",
+  "basePath": "/admin",
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/campaigns": {
+      "post": {
+        "description": "TODO: Add Description",
+        "summary": "CreateCampaign400",
+        "tags": [
+          "Campaigns"
+        ],
+        "operationId": "CampaignsPost",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      },
+      "get": {
+        "description": "TODO: Add Description",
+        "summary": "GetCampaigns",
+        "tags": [
+          "Campaigns"
+        ],
+        "operationId": "CampaignsGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "User-Agent",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/messages": {
+      "get": {
+        "description": "TODO: Add Description",
+        "summary": "Getmessages",
+        "tags": [
+          "Messages"
+        ],
+        "operationId": "MessagesGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "CreateCampaignRequest": {
+      "title": "CreateCampaignRequest",
+      "example": {
+        "name": "uma campanha",
+        "date": 23343452353,
+        "type": "recurrent",
+        "filters": [
+          "vas",
+          "ads+10"
+        ],
+        "message": {
+          "body": {
+            "buttons": [
+              {
+                "title": "Button title",
+                "type": 1,
+                "payload": "Some payload",
+                "url": "Some url"
+              }
+            ],
+            "title": "Nova mensagem",
+            "subtitle": "Subtitle",
+            "image": "some url"
+          },
+          "type": "vas"
+        },
+        "active": true
+      },
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "date": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "type": {
+          "type": "string"
+        },
+        "filters": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "message": {
+          "$ref": "#/definitions/Message"
+        },
+        "active": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "name",
+        "date",
+        "type",
+        "filters",
+        "message",
+        "active"
+      ]
+    },
+    "Message": {
+      "title": "Message",
+      "type": "object",
+      "properties": {
+        "body": {
+          "$ref": "#/definitions/Body"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "body",
+        "type"
+      ]
+    },
+    "Body": {
+      "title": "Body",
+      "type": "object",
+      "properties": {
+        "buttons": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Button"
+          }
+        },
+        "title": {
+          "type": "string"
+        },
+        "subtitle": {
+          "type": "string"
+        },
+        "image": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "buttons",
+        "title",
+        "subtitle",
+        "image"
+      ]
+    },
+    "Button": {
+      "title": "Button",
+      "type": "object",
+      "properties": {
+        "title": {
+          "example": "Button title",
+          "type": "string"
+        },
+        "type": {
+          "example": 1,
+          "type": "integer",
+          "format": "int32"
+        },
+        "payload": {
+          "example": "Some payload",
+          "type": "string"
+        },
+        "url": {
+          "example": "Some url",
+          "type": "string"
+        }
+      },
+      "required": [
+        "title",
+        "type",
+        "payload",
+        "url"
+      ]
+    }
+  },
+  "tags": [
+    {
+      "name": "Campaigns"
+    },
+    {
+      "name": "Messages"
+    }
+  ]
+}
